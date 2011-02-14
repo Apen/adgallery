@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+	<meta type="array">
+		<type>module</type>
+		<description>Language labels for plugin &quot;tx_adgallery_pi1&quot;</description>
+	</meta>
+	<data type="array">
+		<languageKey index="default" type="array">
+			<label index="label_suiv">Next</label>
+			<label index="label_prec">Previous</label>
+			<label index="label_retour">Back to the gallery</label>
+			<label index="title_page_browser">Page %d / %d</label>
+			<label index="single_title_page_browser">Image %d / %d</label>
+			<label index="single_label_suiv">Next image</label>
+			<label index="single_label_prec">Previous image</label>
+		</languageKey>
+		<languageKey index="fr" type="array">
+			<label index="label_suiv">Suivant</label>
+			<label index="label_prec">Précédent</label>
+			<label index="label_retour">Retour à la galerie</label>
+			<label index="title_page_browser">Page %d / %d</label>
+			<label index="single_title_page_browser">Image %d / %d</label>
+			<label index="single_label_suiv">Image suivante</label>
+			<label index="single_label_prec">Image précédente</label>
+		</languageKey>
+	</data>
+</T3locallang>

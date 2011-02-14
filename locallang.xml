@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+    <meta type="array">
+        <type>module</type>
+        <description>Language labels for extension 'adgallery'</description>
+    </meta>
+    <data type="array">
+        <languageKey index="default" type="array">
+            <label index="pi1_title">Image gallery</label>
+            <label index="pi1_plus_wiz_description"></label>
+            <label index="selectgallery">Choose a "adgallery" plugin</label>
+            <label index="flexformpi1.displayType">Display mode</label>
+            <label index="flexformpi1.displayType.0">Choose...</label>
+            <label index="flexformpi1.displayType.1">DAM directory</label>
+            <label index="flexformpi1.displayType.2">DAM category</label>
+            <label index="flexformpi1.displayType.3">Classic directory</label>
+            <label index="flexformpi1.imagespath">Images path</label>
+            <label index="flexformpi1.htmltemplate">Path to the HTML template</label>
+            <label index="flexformpi1.effect">Effect</label>
+            <label index="flexformpi1.js">JS File (to change the library)</label>
+            <label index="flexformpi1.jsfooter">Optimisation : JS File in the footer</label>
+            <label index="flexformpi1.css">Path to CSS</label>
+            <label index="flexformpi1.thumbs">Thumbs</label>
+            <label index="flexformpi1.advanced">Advanced</label>
+            <label index="flexformpi1.taille">Size of the animation (ex : 275x160)</label>
+            <label index="flexformpi1.tailleVignette">Size of the thumbs (ex : 195x100,195mx100,195cx100...)</label>
+            <label index="flexformpi1.tailleVignetteSingle">Size of the full thumb (ex : 195x100,195mx100,195cx100...)</label>
+        </languageKey>
+        <languageKey index="fr" type="array">
+            <label index="pi1_title">Galerie d'images</label>
+            <label index="pi1_plus_wiz_description"></label>
+            <label index="selectgallery">Selectionner un plugin "adgallery"</label>
+            <label index="flexformpi1.displayType">Mode d'affichage</label>
+            <label index="flexformpi1.displayType.0">Selectionner...</label>
+            <label index="flexformpi1.displayType.1">Répertoire DAM</label>
+            <label index="flexformpi1.displayType.2">Catégorie DAM</label>
+            <label index="flexformpi1.displayType.3">Répertoire classique</label>
+            <label index="flexformpi1.imagespath">Chemin des images</label>
+            <label index="flexformpi1.htmltemplate">Fichier de template HTML</label>
+            <label index="flexformpi1.effect">Effet</label>
+            <label index="flexformpi1.js">Fichier JS (pour changer de librairie)</label>
+            <label index="flexformpi1.jsfooter">Optimisation : Fichier JS en footer</label>
+            <label index="flexformpi1.css">Fichier CSS</label>
+            <label index="flexformpi1.thumbs">Vignettes</label>
+            <label index="flexformpi1.advanced">Avancé</label>
+            <label index="flexformpi1.taille">Taille de l'animation (ex : 275x160)</label>
+            <label index="flexformpi1.tailleVignette">Taille des vignettes (ex : 195x100,195mx100,195cx100...)</label>
+            <label index="flexformpi1.tailleVignetteSingle">Taille de l'image principale (ex : 195x100,195mx100,195cx100...)</label>
+        </languageKey>
+    </data>
+</T3locallang>

@@ -1,0 +1,41 @@
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ADGALLERY DOC : http://coffeescripter.com/code/ad-gallery/
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+IMAGES LIST
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+###HREF###      : path to the original image
+###THUMB###     : path to the tumb image
+###THUMBFULL### : path to the full thumb image (size between the thumb and the original)
+###WIDTH###     : width of the global div
+###HEIGHT###    : height of the global div
+###EFFECT###    : effect of the adgallery animation
+
+<!-- ###ADGALLERY_GLOBAL### - begin -->
+<script type="text/javascript">
+    $(document).ready(function()
+                      {
+                          $('.ad-gallery').adGallery({width:'###WIDTH###',height:'###HEIGHT###',effect:'###EFFECT###',slideshow:{enable:true,autostart:true,speed:3000,start_label:'Lecture',stop_label:'Pause'}});
+                      });
+</script>
+<div id="ad-gallery" class="ad-gallery">
+    <div class="ad-image-wrapper">
+    </div>
+    <div class="ad-controls">
+    </div>
+    <div class="ad-nav">
+        <div class="ad-thumbs">
+            <ul class="ad-thumb-list">
+                <!-- ###ADGALLERY_LIST### - begin -->
+                <li>
+                    <a href="###THUMBFULL###">
+                        ###THUMB###
+                    </a>
+                </li>
+                <!-- ###ADGALLERY_LIST### - end -->
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- ###ADGALLERY_GLOBAL### - end -->
+
