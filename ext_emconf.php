@@ -3,7 +3,7 @@
 /***************************************************************
  * Extension Manager/Repository config file for ext "adgallery".
  *
- * Auto generated 06-12-2015 16:29
+ * Auto generated 06-12-2015 16:30
  *
  * Manual updates:
  * Only the data in the array - everything else is removed by next
@@ -15,7 +15,7 @@ $EM_CONF[$_EXTKEY] = array (
 	'description' => 'Multimedia gallery based on adgallery',
 	'category' => 'plugin',
 	'shy' => 0,
-	'version' => '1.0.0',
+	'version' => '1.0.1',
 	'dependencies' => '',
 	'conflicts' => '',
 	'priority' => '',

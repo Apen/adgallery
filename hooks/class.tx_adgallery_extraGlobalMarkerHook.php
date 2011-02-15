@@ -20,8 +20,8 @@ class tx_adgallery_extraGlobalMarkerHook
 	}
 }
 
-if (defined('TYPO3_MODE') && $TYPO3_CONF_VARS[TYPO3_MODE]['XCLASS']['ext/adgallery/class.tx_adgallery_extraGlobalMarkerHook.php']) {
-	include_once($TYPO3_CONF_VARS[TYPO3_MODE]['XCLASS']['ext/adgallery/class.tx_adgallery_extraGlobalMarkerHook.php']);
+if (defined('TYPO3_MODE') && $TYPO3_CONF_VARS[TYPO3_MODE]['XCLASS']['ext/adgallery/hooks/class.tx_adgallery_extraGlobalMarkerHook.php']) {
+	include_once($TYPO3_CONF_VARS[TYPO3_MODE]['XCLASS']['ext/adgallery/hooks/class.tx_adgallery_extraGlobalMarkerHook.php']);
 }
 
 ?>
