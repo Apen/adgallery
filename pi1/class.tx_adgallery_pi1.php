@@ -34,12 +34,13 @@ require_once(PATH_tslib . 'class.tslib_pibase.php');
 
 class tx_adgallery_pi1 extends tslib_pibase
 {
-	var $prefixId = 'tx_adgallery_pi1'; // Same as class name
-	var $scriptRelPath = 'pi1/class.tx_adgallery_pi1.php'; // Path to this script relative to the extension dir.
-	var $extKey = 'adgallery'; // The extension key.
-	var $template = null;
-	var $conf = null;
-	var $misc = null;
+	public $prefixId = 'tx_adgallery_pi1'; // Same as class name
+	public $scriptRelPath = 'pi1/class.tx_adgallery_pi1.php'; // Path to this script relative to the extension dir.
+	public $extKey = 'adgallery'; // The extension key.
+	public $conf = null;
+	protected $template = null;
+	protected $misc = null;
+	protected $imageDir = 'uploads/tx_adgallery/';
 
 	/**
 	 * The main method of the PlugIn
@@ -206,8 +207,28 @@ class tx_adgallery_pi1 extends tslib_pibase
 		$iItem = 1;
 
 		$markerArrayTemp = array();
-		// Normal mode without DAM
-		if ($this->conf['displayType'] == 3) {
+
+		// Normal mode with selected files
+		if ($this->conf['displayType'] == 0) {
+			$files = t3lib_div::trimExplode(',', $this->conf['classicimages']);
+			$titles = t3lib_div::trimExplode(chr(10), $this->conf['classicimagestitles']);
+			$alt_texts = t3lib_div::trimExplode(chr(10), $this->conf['classicimagesalttexts']);
+			foreach ($files as $file) {
+				$markerArray = array();
+				$item['file_path'] = trim($this->imageDir);
+				$item['file_name'] = $file;
+				$item['title'] = (count($titles) >= $iItem) ? $titles[$iItem - 1] : '';
+				$item['alt_text'] = (count($alt_texts) >= $iItem) ? $alt_texts[$iItem - 1] : '';
+				$item['description'] = $item['file_path'] . $file;
+				$item = $this->processItemList($item);
+				$item['i'] = $iItem++;
+				$markerArray = array_merge($markerArray, $this->misc->convertToMarkerArray($item));
+				$markerArrayTemp [] = $markerArray;
+				unset($markerArray);
+			}
+
+		}
+		else if ($this->conf['displayType'] == 3) { // Normal mode without DAM
 			$path = rtrim(trim(PATH_site . $this->conf['classicimagespath']), '/');
 			$files = t3lib_div::getFilesInDir($path, 'png,gif,jpg,jpeg', 0, 1);
 			foreach ($files as $file) {

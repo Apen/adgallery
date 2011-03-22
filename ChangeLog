@@ -1,3 +1,5 @@
+2011-03-22 CERDAN Yohann <cerdanyohann@yahoo.fr>
+    * Add the possibility to directly choose image in the flexform (thanks to Sebastien DELCROIX)
 2010-12-20 CERDAN Yohann <cerdanyohann@yahoo.fr>
 	* Can add the marker ###ADGALLERY_GLOBAL### in the RTE content of tt_news
 2010-10-21 CERDAN Yohann <cerdanyohann@yahoo.fr>
