@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright notice
+ *    Copyright notice
  *
  *    (c) 2009 CERDAN Yohann <cerdanyohann@yahoo.fr>
  *    All rights reserved
@@ -22,36 +22,35 @@
  *    This copyright notice MUST APPEAR in all copies of the script!
  */
 
-require_once(PATH_tslib . 'class.tslib_pibase.php');
+if (tx_adgallery_pi1::intFromVer(TYPO3_version) < 6002000) {
+	require_once(PATH_tslib . 'class.tslib_pibase.php');
+}
 
 /**
  * Plugin 'Affichage d'une galerie multimédia' for the 'adgallery' extension.
  *
- * @author CERDAN Yohann <cerdanyohann@yahoo.fr>
- * @package TYPO3
+ * @author     CERDAN Yohann <cerdanyohann@yahoo.fr>
+ * @package    TYPO3
  * @subpackage tx_adgallery
  */
-
-class tx_adgallery_pi1 extends tslib_pibase
-{
+class tx_adgallery_pi1 extends tslib_pibase {
 	public $prefixId = 'tx_adgallery_pi1'; // Same as class name
 	public $scriptRelPath = 'pi1/class.tx_adgallery_pi1.php'; // Path to this script relative to the extension dir.
 	public $extKey = 'adgallery'; // The extension key.
-	public $conf = null;
-	protected $template = null;
-	protected $misc = null;
+	public $conf = NULL;
+	protected $template = NULL;
+	protected $misc = NULL;
 	protected $imageDir = 'uploads/tx_adgallery/';
 
 	/**
 	 * The main method of the PlugIn
 	 *
 	 * @param string $content : The PlugIn content
-	 * @param array $conf : The PlugIn configuration
+	 * @param array  $conf    : The PlugIn configuration
 	 * @return The content that is displayed on the website
 	 */
 
-	function main($content, $conf)
-	{
+	function main($content, $conf) {
 		$this->conf = $conf;
 		$this->pi_setPiVarDefaults();
 		$this->pi_loadLL();
@@ -66,8 +65,7 @@ class tx_adgallery_pi1 extends tslib_pibase
 	 * @return
 	 */
 
-	function init()
-	{
+	function init() {
 		// Instanciation
 		$this->template = new tx_t3devapi_templating($this);
 		$this->conf = tx_t3devapi_config::getArrayConfig();
@@ -122,9 +120,6 @@ class tx_adgallery_pi1 extends tslib_pibase
 
 		// Debug SQL
 		// $this->misc->debugQueryInit();
-
-		// Debug conf
-		// t3lib_div::debug($this->conf, 'conf');
 	}
 
 	/**
@@ -134,8 +129,7 @@ class tx_adgallery_pi1 extends tslib_pibase
 	 * @return
 	 */
 
-	function getAllImagesFromDirectory($directory)
-	{
+	function getAllImagesFromDirectory($directory) {
 		$res = $GLOBALS['TYPO3_DB']->exec_SELECTquery(
 			'tx_dam.uid,tx_dam.pid,tx_dam.file_path,tx_dam.file_name,tx_dam.title,tx_dam.description,tx_dam.alt_text',
 			'tx_dam',
@@ -154,8 +148,7 @@ class tx_adgallery_pi1 extends tslib_pibase
 	 * @return
 	 */
 
-	function getAllImagesFromCategory($category)
-	{
+	function getAllImagesFromCategory($category) {
 		$res = $GLOBALS['TYPO3_DB']->exec_SELECTquery(
 			'tx_dam.uid,tx_dam.pid,tx_dam.file_path,tx_dam.file_name,tx_dam.title,tx_dam.description,tx_dam.alt_text',
 			'tx_dam,tx_dam_mm_cat',
@@ -173,9 +166,8 @@ class tx_adgallery_pi1 extends tslib_pibase
 	 * @return
 	 */
 
-	function getAllItems()
-	{
-		$res = null;
+	function getAllItems() {
+		$res = NULL;
 
 		switch ($this->conf['displayType']) {
 			case '1' :
@@ -195,8 +187,7 @@ class tx_adgallery_pi1 extends tslib_pibase
 	 * @return
 	 */
 
-	function displayItemsList()
-	{
+	function displayItemsList() {
 		$content = '';
 		$contentList = '';
 
@@ -227,8 +218,7 @@ class tx_adgallery_pi1 extends tslib_pibase
 				unset($markerArray);
 			}
 
-		}
-		else if ($this->conf['displayType'] == 3) { // Normal mode without DAM
+		} else if ($this->conf['displayType'] == 3) { // Normal mode without DAM
 			$path = rtrim(trim(PATH_site . $this->conf['classicimagespath']), '/');
 			$files = t3lib_div::getFilesInDir($path, 'png,gif,jpg,jpeg', 0, 1);
 			foreach ($files as $file) {
@@ -278,8 +268,7 @@ class tx_adgallery_pi1 extends tslib_pibase
 	 * @return
 	 */
 
-	function processItemList($item)
-	{
+	function processItemList($item) {
 		// Path to the image
 		$item['href'] = $item['file_path'] . $item['file_name'];
 
@@ -288,14 +277,18 @@ class tx_adgallery_pi1 extends tslib_pibase
 
 		// Path to the single thumb
 		if (($this->conf['vignetteSingleWidth'] != '') && ($this->conf['vignetteSingleHeight'] != '')) {
-			$thumbFull = $this->misc->cImage($item['file_path'] . $item['file_name'], $item['title'], $item['alt_text'], $this->conf['vignetteSingleWidth'], $this->conf['vignetteSingleHeight'], $item['description']);
+			$thumbFull = $this->misc->cImage($item['file_path'] . $item['file_name'], $item['title'], $item['alt_text'], $this->conf['vignetteSingleWidth'], $this->conf['vignetteSingleHeight'],
+			                                 $item['description']
+			);
 			if (preg_match('/src="(.*?)"/', $thumbFull, $matches)) {
 				$item['thumbfull'] = $matches[1];
 			}
 		}
 
 		// Path to the list thumb
-		$item['thumb'] = $this->misc->cImage($item['file_path'] . $item['file_name'], $item['title'], $item['alt_text'], $this->conf['vignetteWidth'], $this->conf['vignetteHeight'], $item['description']);
+		$item['thumb'] = $this->misc->cImage($item['file_path'] . $item['file_name'], $item['title'], $item['alt_text'], $this->conf['vignetteWidth'], $this->conf['vignetteHeight'],
+		                                     $item['description']
+		);
 
 		return $item;
 	}
@@ -305,14 +298,23 @@ class tx_adgallery_pi1 extends tslib_pibase
 	 *
 	 * @return
 	 */
-
-	function extraGlobalMarker()
-	{
+	function extraGlobalMarker() {
 		$extra = array();
 		$extra['width'] = $this->conf['width'];
 		$extra['height'] = $this->conf['height'];
 		$extra['effect'] = $this->conf['effect'];
 		return $this->misc->convertToMarkerArray($extra);
+	}
+
+	/**
+	 * Returns an integer from a three part version number, eg '4.12.3' -> 4012003
+	 *
+	 * @param    string $verNumberStr number on format x.x.x
+	 * @return   integer   Integer version of version number (where each part can count to 999)
+	 */
+	public static function intFromVer($verNumberStr) {
+		$verParts = explode('.', $verNumberStr);
+		return intval((int)$verParts[0] . str_pad((int)$verParts[1], 3, '0', STR_PAD_LEFT) . str_pad((int)$verParts[2], 3, '0', STR_PAD_LEFT));
 	}
 }
 
