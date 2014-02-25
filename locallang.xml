@@ -14,6 +14,7 @@
             <label index="flexformpi1.displayType.1">DAM directory</label>
             <label index="flexformpi1.displayType.2">DAM category</label>
             <label index="flexformpi1.displayType.3">Classic directory</label>
+            <label index="flexformpi1.displayType.4">FAL, sys_category and Media</label>
             <label index="flexformpi1.imagespath">Images path</label>
             <label index="flexformpi1.images">Images</label>
             <label index="flexformpi1.imagestitles">Images Titles</label>
@@ -38,6 +39,7 @@
             <label index="flexformpi1.displayType.1">Répertoire DAM</label>
             <label index="flexformpi1.displayType.2">Catégorie DAM</label>
             <label index="flexformpi1.displayType.3">Répertoire classique</label>
+            <label index="flexformpi1.displayType.4">FAL, sys_category et Media</label>
             <label index="flexformpi1.imagespath">Chemin des images</label>
             <label index="flexformpi1.images">Images</label>
             <label index="flexformpi1.imagestitles">Titre des images</label>

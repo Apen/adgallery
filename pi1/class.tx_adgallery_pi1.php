@@ -161,6 +161,26 @@ class tx_adgallery_pi1 extends tslib_pibase {
 	}
 
 	/**
+	 * tx_adgallery_pi1::getAllImagesFromSysCategory()
+	 *
+	 * @param mixed $category
+	 * @return
+	 */
+
+	function getAllImagesFromSysCategory($category) {
+		$res = $GLOBALS['TYPO3_DB']->exec_SELECTquery(
+			'sys_file.uid,sys_file.pid,sys_file.identifier,sys_file.name,sys_file.title,sys_file.description,sys_file.alternative,sys_file.storage',
+			'sys_file,sys_category_record_mm',
+			'sys_file.uid=sys_category_record_mm.uid_foreign AND sys_category_record_mm.tablenames="sys_file" ' . $this->cObj->enableFields('sys_file') . ' AND find_in_set(\'' . intval($category
+			) . '\',sys_category_record_mm.uid_local)',
+			'',
+			'sys_file.uid'
+		);
+		// $this->misc->debugQuery();
+		return $res;
+	}
+
+	/**
 	 * tx_adgallery_pi1::getAllItems()
 	 *
 	 * @return
@@ -175,6 +195,9 @@ class tx_adgallery_pi1 extends tslib_pibase {
 				break;
 			case '2' :
 				$res = $this->getAllImagesFromCategory($this->conf['damcategory']);
+				break;
+			case '4' :
+				$res = $this->getAllImagesFromSysCategory($this->conf['syscategory']);
 				break;
 		}
 
@@ -234,6 +257,24 @@ class tx_adgallery_pi1 extends tslib_pibase {
 				$markerArrayTemp [] = $markerArray;
 				unset($markerArray);
 			}
+		} else if ($this->conf['displayType'] == 4) {
+			while ($item = $GLOBALS['TYPO3_DB']->sql_fetch_assoc($res)) {
+				$fileRepository = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('TYPO3\CMS\Core\Resource\FileRepository');
+				$file = $fileRepository->findByUid($item['uid']);
+				$storageConfiguration = $file->getStorage()->getConfiguration();
+				$basePath = rtrim($storageConfiguration['basePath'], '/');
+				$markerArray = array();
+				$item['file_path'] = $basePath . dirname($item['identifier']) . '/';
+				$item['file_name'] = $item['name'];
+				$item['title'] = $item['title'];
+				$item['alt_text'] = $item['alternative'];
+				$item = $this->processItemList($item);
+				$item['i'] = $iItem++;
+				$markerArray = array_merge($markerArray, $this->misc->convertToMarkerArray($item));
+				$markerArrayTemp [] = $markerArray;
+				unset($markerArray);
+			}
+			$GLOBALS['TYPO3_DB']->sql_free_result($res);
 		} else { // Mode with DAM directory or DAM category
 			while ($item = $GLOBALS['TYPO3_DB']->sql_fetch_assoc($res)) {
 				$markerArray = array();
