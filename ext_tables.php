@@ -13,7 +13,7 @@ t3lib_extMgm::addPiFlexFormValue($_EXTKEY . '_pi1', 'FILE:EXT:' . $_EXTKEY . '/p
 if (TYPO3_MODE == "BE") $TBE_MODULES_EXT["xMOD_db_new_content_el"]["addElClasses"]["tx_adgallery_pi1_wizicon"] = t3lib_extMgm::extPath($_EXTKEY) . 'pi1/class.tx_adgallery_pi1_wizicon.php';
 
 // Add the tt_news compatibility
-if (t3lib_extMgm::isLoaded('tt_news')) {
+/*if (t3lib_extMgm::isLoaded('tt_news')) {
 	$tempColumns = Array(
 		'tx_adgallery_gallery' => Array(
 			'exclude' => 1,
@@ -31,6 +31,6 @@ if (t3lib_extMgm::isLoaded('tt_news')) {
 	t3lib_div::loadTCA("tt_news");
 	t3lib_extMgm::addTCAcolumns('tt_news', $tempColumns, 1);
 	t3lib_extMgm::addToAllTCAtypes("tt_news", "--div--;LLL:EXT:adgallery/locallang.xml:pi1_title,tx_adgallery_gallery");
-}
+}*/
 
 ?>

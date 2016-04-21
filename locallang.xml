@@ -11,11 +11,11 @@
             <label index="selectgallery">Choose a "adgallery" plugin</label>
             <label index="flexformpi1.displayType">Display mode</label>
             <label index="flexformpi1.displayType.0">Choose some images</label>
-            <label index="flexformpi1.displayType.1">DAM directory</label>
+            <label index="flexformpi1.displayType.1">DAM directory (OR FAL directory in 6.2+)</label>
             <label index="flexformpi1.displayType.2">DAM category</label>
             <label index="flexformpi1.displayType.3">Classic directory</label>
             <label index="flexformpi1.displayType.4">FAL, sys_category and Media</label>
-            <label index="flexformpi1.imagespath">Images path</label>
+            <label index="flexformpi1.imagespath">Full images path (in 6.2 storageUid:path)</label>
             <label index="flexformpi1.images">Images</label>
             <label index="flexformpi1.imagestitles">Images Titles</label>
             <label index="flexformpi1.imagesalttexts">Images Alternative Texts</label>
@@ -36,11 +36,11 @@
             <label index="selectgallery">Selectionner un plugin "adgallery"</label>
             <label index="flexformpi1.displayType">Mode d'affichage</label>
             <label index="flexformpi1.displayType.0">Sélectionner des images</label>
-            <label index="flexformpi1.displayType.1">Répertoire DAM</label>
+            <label index="flexformpi1.displayType.1">Répertoire DAM (ou répertoire FAL en 6.2+)</label>
             <label index="flexformpi1.displayType.2">Catégorie DAM</label>
             <label index="flexformpi1.displayType.3">Répertoire classique</label>
             <label index="flexformpi1.displayType.4">FAL, sys_category et Media</label>
-            <label index="flexformpi1.imagespath">Chemin des images</label>
+            <label index="flexformpi1.imagespath">Chemin absolu des images (en 6.2 storageUid:chemin)</label>
             <label index="flexformpi1.images">Images</label>
             <label index="flexformpi1.imagestitles">Titre des images</label>
             <label index="flexformpi1.imagesalttexts">Texte alternatif des images</label>
